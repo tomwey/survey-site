@@ -1,0 +1,16 @@
+# coding: utf-8
+defaults: &defaults
+  app_name: ""
+  domain: ""
+  secret_token: ''
+  admin_emails:
+    - ""
+  
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

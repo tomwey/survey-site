@@ -10,6 +10,8 @@ gem 'mysql2'
 gem "devise"
 gem 'simple_form'
 
+gem "settingslogic"
+
 # 分页
 gem "will_paginate"
 
