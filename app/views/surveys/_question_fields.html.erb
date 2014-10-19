@@ -1,0 +1,18 @@
+<div class="question-item">
+  <%= f.input :title, label: "问题" %>
+  <%= f.input :tip, label: "提示文本" %>
+  <%= f.input :type_id, as: :select, label: "问题类型", collection: Question::QUESTION_TYPES,
+  prompt: '--请选择问题类型--' %>
+  <%= f.input :sort, label: "问题顺序" %>
+  <div class="controls">
+    <%= link_to_remove_fields "移除", f %>
+  </div>
+
+  <%= f.fields_for :answers do |builder| %>
+  <%= render 'answer_fields', :f => builder %>
+  <% end %>
+  <div class="controls">
+    <%= link_to_add_fields "添加答案", f, :answers %>
+  </div>
+</div>
+

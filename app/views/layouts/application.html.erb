@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>可可工作室问卷调查后台</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to "控制台", root_path, :class => "brand" %>
+        <%= render_list :class => "nav" do |li| 
+        li << link_to('首页', root_path)
+        end %>
+  
+        <% if current_user %>
+        <ul class="nav pull-right">
+          <li class="dropdown" id="user_menu">
+            <a href="#user_menu" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "退出", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+        </ul>
+        <% else %>
+        <ul class="nav pull-right">
+          <li><%= link_to "登录", new_user_session_path %></li>
+        </ul>
+        <% end %>
+  
+      </div>
+    </div>
+  </div>
+  
+<div class="container">
+  <%= notice_message %>
+  <%= yield %>
+</div>
+
+  <%= javascript_include_tag "application" %>
+  
+</body>
+</html>
